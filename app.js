@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var quizRouter = require('./routes/quiz');
 var categoryRouter = require('./routes/category');
+var cors = require('cors')
 var app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/quiz-api')
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/quiz-api')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
